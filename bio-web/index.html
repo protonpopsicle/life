@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body { background: #111; color: #eee; font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+            .controls { margin-bottom: 10px; padding: 15px; background: #222; border-radius: 8px; display: flex; gap: 20px; align-items: center; }
+            button { padding: 8px 16px; cursor: pointer; background: #444; color: white; border: none; border-radius: 4px; }
+            button:hover { background: #555; }
+            .sim-layout { display: flex; gap: 16px; align-items: stretch; }
+            canvas { background: #000; border: 1px solid #444; flex-shrink: 0; }
+            .info-panel {
+                width: 200px;
+                padding: 16px;
+                background: #222;
+                border: 1px solid #444;
+                border-radius: 8px;
+                box-sizing: border-box;
+            }
+            .info-panel h2 {
+                margin: 0 0 12px;
+                font-size: 15px;
+                font-weight: 600;
+                letter-spacing: 0.02em;
+                text-transform: uppercase;
+                color: #aaa;
+            }
+            .info-panel dl { margin: 0; }
+            .info-panel dt {
+                margin: 0;
+                font-size: 12px;
+                color: #888;
+            }
+            .info-panel dd {
+                margin: 2px 0 12px;
+                font-size: 18px;
+                font-variant-numeric: tabular-nums;
+            }
+            .info-panel dd:last-child { margin-bottom: 0; }
+            .info-panel .panel-updated {
+                margin-top: 16px;
+                padding-top: 12px;
+                border-top: 1px solid #333;
+                font-size: 11px;
+                color: #666;
+            }
+          </style>
+    </head>
+<body>
+    <div class="controls">
+        <div>
+          <label for="speedSlider">Speed: </label>
+          <input type="range" id="speedSlider" min="0.1" max="10" step="0.1" value="1">
+          <output id="speedValue">1.0</output>x
+        </div>
+        <!-- The Reset Button [1] -->
+        <button id="resetBtn">Reset Simulation</button>
+      </div>
+    <div class="sim-layout">
+        <canvas id="simCanvas" width="400" height="400" style="background:#000"></canvas>
+        <aside class="info-panel" aria-label="Environment information">
+            <h2>Environment</h2>
+            <dl>
+                <dt>CO₂</dt>
+                <dd id="envCO2">—</dd>
+                <dt>H₂O</dt>
+                <dd id="envH2O">—</dd>
+                <dt>O₂</dt>
+                <dd id="envO2">—</dd>
+            </dl>
+            <p class="panel-updated" id="envPanelUpdated">Updated —</p>
+        </aside>
+    </div>
+<script src="environment.js"></script>
+<script src="chem.js"></script>
+<script src="bio.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
